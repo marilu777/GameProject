@@ -2,10 +2,10 @@ const canvas = document.getElementById("base");
 const ctx = canvas.getContext("2d");
 
 const cWidth = canvas.width;
-const cHeight = canvas.heigth;
+const cHeight = canvas.height;
 
 
-const player = new Component(30, 30, 'blue', 650, 550, ctx);
+const player = new Component(30, 30, 'brown', 650, 550, ctx);
 
 let game;
 
@@ -29,6 +29,7 @@ document.addEventListener('keydown', (e) => {
       case 'ArrowRight':
         player.speedX += 1;
         break;
+      case 's'
     }
   });
 

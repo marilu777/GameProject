@@ -7,3 +7,8 @@
     text-align: center;
 
 }
+.bomb {
+    background-color: blueviolet;
+    width: 5px;
+    height: 5px;
+}
