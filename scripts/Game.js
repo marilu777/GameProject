@@ -1,5 +1,5 @@
 class Game{
-    constructor(ctx, width, height, player) {
+    constructor(ctx, width, height, player, document) {
         this.frames = 0;
         this.ctx = ctx;
         this.width = width;
@@ -11,14 +11,23 @@ class Game{
         this.badObstacles = []
         this.goodObstacles = []
         this.bigObstacles = [];
-        this.life = 7;
-        this.bomb = [];
-        
+        this.life = 7;       
+        this.document = document;
 }
 start = () => {
+    this.document.getElementById("start").classList.add("hidden");
+    //this.toggleScreen('startdiv', false);
+    //this.toggleScreen('base', true);
+    //this.toggleScreen('overdiv', false);
     this.interval = setInterval(this.updateGameArea, 10);
     this.isRunning = true;
 }
+/*
+toggleScreen(id,toggle){
+    let element = document.getElementById(id);
+    let display = ( toggle ) ? 'block' : 'none';
+    element.style.display = display;
+}*/
 
 reset = () => {
     this.player.x = 0;
@@ -33,6 +42,15 @@ clear() {
 }
 
 stop() {
+    this.document.getElementById("start").classList.remove("hidden");
+
+    /* let img = new Image()
+    img.src = "../docs/assets/images/backgroundIMAGE.jpg";
+    this.ctx.drawImage(img, 0, 0,this.width, this.height) */
+    this.ctx.fillStyle = "black"
+    this.ctx.fillRect(0, 0, this.width, this.height)
+    this.ctx.fillStyle = "white"
+    this.ctx.fillText("You Lost", this.width / 2, this.height / 2)
     clearInterval(this.interval);
     this.isRunning = false;
 }
@@ -41,15 +59,15 @@ stop() {
 createObstacles() {
     if(this.frames % 30 === 0) {
         let width = Math.floor(Math.random() * this.width);
-        this.badObstacles.push(new Component(40, 40 , "red", width, 10, this.ctx))
+        this.badObstacles.push(new Component(40, 40 , "red", width, 10, this.ctx, './docs/assets/images/pickle.png'))
     }
     if(this.frames % 250 === 0) {
         let width = Math.floor(Math.random() * this.width);
-        this.goodObstacles.push(new Component(40, 40, "yellow", width, 10, this.ctx))
+        this.goodObstacles.push(new Component(40, 40, "yellow", width, 10, this.ctx, './docs/assets/images/sushi.png'))
     }
     if(this.frames % 300 === 0) {
         let width = Math.floor(Math.random() * this.width);
-        this.bigObstacles.push(new Component(40, 40, "orange", width, 10, this.ctx))
+        this.bigObstacles.push(new Component(40, 40, "orange", width, 10, this.ctx, './docs/assets/images/cake.png'))
     }
 }
 
@@ -77,12 +95,16 @@ checkCollisions(){
     const badCrash = this.badObstacles.some((obstacle) => {
         if(this.player.crashWith(obstacle)){
             this.badObstacles.splice(this.badObstacles.indexOf(obstacle), 1)
+            this.life --
             return true
         }
     })
     const goodCrash = this.goodObstacles.some((obstacle) => {
         if(this.player.crashWith(obstacle)){
             this.goodObstacles.splice(this.goodObstacles.indexOf(obstacle), 1)
+            if (this.life < 7) {
+                this.life++;
+            }
             return true
         }
     })
@@ -95,8 +117,15 @@ checkCollisions(){
     /*counter(){
         let counting = Math.floor(this.frames / 90);
     } */
-    if(badCrash) this.life--
-    if(goodCrash) this.life++
+/*     if(badCrash) this.life--
+    if(goodCrash){
+        this.life++ */
+        /*this.life++ <= 7
+        return
+    } else {
+        return 7;
+    };*/
+        
     if(bigCrash){
         this.player.width = 70
         this.player.height = 70
@@ -105,12 +134,15 @@ checkCollisions(){
         this.player.width = 35
         this.player.height = 35
     } */
-}
+    }
 
-/*checkGameOver(){
+checkGameOver(){
+/*     this.drawImage('startdiv', false);
+    this.drawImage('base', false);
+    this.drawImage('overdiv', true); */
     if(this.life === 0)
         this.stop();
-}*/
+}
     
 drawLife(){
     this.ctx.font = '24px serif'
@@ -124,11 +156,6 @@ drawScore(){
     this.ctx.fillText(`Score: ${points}`, 1140, 40)
 
 }
-  
-bullet(){
-    this.bomb.push(new this.bomb());
-
-}
 
 updateGameArea = () => {
     this.frames++
@@ -140,17 +167,7 @@ updateGameArea = () => {
     this.checkCollisions()
     this.drawLife()
     this.drawScore()
-    this.bullet()
-    //this.createObstacle()
-/*     this.getRandom.updateBadObstacles();
-    this.getRandom.updateGoodObstacles();
-    this.getRandom.updateBigObstacles(); */
-
-    
-   /*  this.fallRandom(); */
-/* this.myGameArea.start();
-    this.myGameArea.clear(); */
- /*    this.player.update(); */
+    this.checkGameOver()
 };
 
 };

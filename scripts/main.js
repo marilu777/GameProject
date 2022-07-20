@@ -5,7 +5,7 @@ const cWidth = canvas.width;
 const cHeight = canvas.height;
 
 
-const player = new Component(30, 30, 'brown', 650, 550, ctx);
+const player = new Component(40, 40, 'brown', 650, 550, ctx, '../docs/assets/images/minicat.png');
 
 let game;
 
@@ -14,11 +14,12 @@ const startBtn = document.getElementById('start');
 
 startBtn.addEventListener('click', () => {
   if (!game) {
-    game = new Game(ctx, cWidth, cHeight, player);
+    canvas.classList.remove("hidden")
+    game = new Game(ctx, cWidth, cHeight, player, document);
     game.start();
   } else if (game && !game.isRunning) {
     game.reset();
-  }
+  } 
 });
 
 document.addEventListener('keydown', (e) => {
@@ -29,7 +30,6 @@ document.addEventListener('keydown', (e) => {
       case 'ArrowRight':
         player.speedX += 1;
         break;
-      case 's'
     }
   });
 
