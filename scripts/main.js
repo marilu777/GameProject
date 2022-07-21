@@ -1,3 +1,5 @@
+window.onload = () => {
+
 const canvas = document.getElementById("base");
 const ctx = canvas.getContext("2d");
 
@@ -39,7 +41,7 @@ document.addEventListener('keydown', (e) => {
   });
 
 
-
+}
 
 
 
