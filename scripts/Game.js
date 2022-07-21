@@ -1,4 +1,4 @@
-window.onload = () => {
+
 
 class Game{
     constructor(ctx, width, height, player, document) {
@@ -18,7 +18,7 @@ class Game{
         
         const gameOver = new Image();
         gameOver.addEventListener('load', () => {});
-        gameOver.src = "./docs/assets/sounds/Kirby.mp3";
+        gameOver.src = "./docs/assets/images/cat-flower.gif";
         this.gameOver = gameOver;
         //let music;                   //vamos ver se funciona
 }
@@ -29,7 +29,7 @@ start = () => {
     //this.toggleScreen('overdiv', false);
     this.interval = setInterval(this.updateGameArea, 4);
     this.isRunning = true;
-    music = new sound("../docs/assets/sounds/Kirby.mp3");
+    music = new sound("./docs/assets/sounds/Kirby.mp3");
 }
 /*
 toggleScreen(id,toggle){
@@ -183,4 +183,3 @@ updateGameArea = () => {
 };
 
 };
-}
