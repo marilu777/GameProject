@@ -8,10 +8,11 @@ class Component {
     this.ctx = ctx;
     this.speedX = 0;
     this.speedY = 0;
-    const img = new Image();
+    let img = new Image();
     img.addEventListener("load", () => {});
     img.src = imgsrc;
     this.img = img;
+    let music;                   //vamos ver se funciona
   }
 
   newPosition() {
