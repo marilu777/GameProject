@@ -58,7 +58,7 @@ stop() {
     this.ctx.fillStyle = "black"                        // './docs/assets/images/cat-flower.gif'   // nao funciona
     this.ctx.fillRect(0, 0, this.width, this.height)
     this.ctx.fillStyle = "white"
-    this.ctx.fillText("I know you love cucumbers", 500, 300)
+    this.ctx.fillText("Game Over", 500, 300)
     clearInterval(this.interval);
     this.isRunning = false;
 }

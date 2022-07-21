@@ -5,7 +5,7 @@ const cWidth = canvas.width;
 const cHeight = canvas.height;
 
 
-const player = new Component(40, 40, 'brown', 650, 550, ctx, '../docs/assets/images/minicat.png');
+const player = new Component(40, 40, 'brown', 650, 550, ctx, './docs/assets/images/minicat.png');
 
 let game;
 
