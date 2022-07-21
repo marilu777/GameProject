@@ -1,3 +1,5 @@
+window.onload = () => {
+
 class Game{
     constructor(ctx, width, height, player, document) {
         this.frames = 0;
@@ -181,3 +183,4 @@ updateGameArea = () => {
 };
 
 };
+}
