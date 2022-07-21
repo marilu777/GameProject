@@ -200,17 +200,19 @@ let game;
 
 
 const startBtn = document.getElementById('start');
+window.onload = () => {
 
-startBtn.addEventListener('click', () => {
-  if (!game) {
-    canvas.classList.remove("hidden")
-    game = new Game(ctx, cWidth, cHeight, player, document);
-    game.start();
-  } else if (game && !game.isRunning) {
-    game.reset();
-  } 
-});
-
+  startBtn.addEventListener('click', () => {
+    if (!game) {
+      canvas.classList.remove("hidden")
+      game = new Game(ctx, cWidth, cHeight, player, document);
+      game.start();
+    } else if (game && !game.isRunning) {
+      game.reset();
+    } 
+  });
+}
+  
 document.addEventListener('keydown', (e) => {
     switch (e.code) {
       case 'ArrowLeft':
