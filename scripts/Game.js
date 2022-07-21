@@ -1,6 +1,6 @@
 
 
-class Game{
+class Game {
     constructor(ctx, width, height, player, document) {
         this.frames = 0;
         this.ctx = ctx;
@@ -147,9 +147,11 @@ checkCollisions(){
     }
 
 checkGameOver(){
-    if(this.life === 0)
+    if(this.life === 0){
         this.stop();
-    this.ctx.drawImage(this.gameOver, 0, 0, this.width, this.height)
+        this.ctx.drawImage(this.gameOver, 0, 0, this.width, this.height)
+
+    }
 }
     
 drawLife(){
