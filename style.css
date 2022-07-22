@@ -50,12 +50,10 @@ body{
 .hidden {
     display: none;
     visibility: hidden;
-    /* background-image: url(./docs/assets/images/cat-flower.gif);
-    background-repeat: repeat;
-    background-size: 100%; */
 }
 
-stop {
-    background-image: url('./docs/assets/images/cat-flower.gif');
-    background-size: 100%;
+#stop{
+    background-image: url('./docs/assets/images/catlower.jpg');
+    background-size: 130%;
+    transform: scale(3);
 }

@@ -12,7 +12,7 @@ class Component {
     img.addEventListener("load", () => {});
     img.src = imgsrc;
     this.img = img;
-    let music;                   //vamos ver se funciona
+    
   }
 
   newPosition() {
@@ -20,8 +20,6 @@ class Component {
   }
 
   draw() {
-    //this.ctx.fillStyle = this.color;
-    //this.ctx.fillRect(this.x, this.y, this.width, this.height);
     this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
   left() {

@@ -18,25 +18,15 @@ class Game {
         
         const gameOver = new Image();
         gameOver.addEventListener('load', () => {});
-        gameOver.src = "./docs/assets/images/cat-flower.gif";
+        gameOver.src = ("../docs/assets/images/catlower.jpg");
         this.gameOver = gameOver;
-        //let music;                   //vamos ver se funciona
 }
 start = () => {
     this.document.getElementById("start").classList.add("hidden");
-    //this.toggleScreen('startdiv', false);
-    //this.toggleScreen('base', true);
-    //this.toggleScreen('overdiv', false);
     this.interval = setInterval(this.updateGameArea, 4);
     this.isRunning = true;
     music = new sound("./docs/assets/sounds/Kirby.mp3");
 }
-/*
-toggleScreen(id,toggle){
-    let element = document.getElementById(id);
-    let display = ( toggle ) ? 'block' : 'none';
-    element.style.display = display;
-}*/
 
 reset = () => {
     this.player.x = 0;
@@ -54,10 +44,7 @@ clear() {
 stop() {
     this.document.getElementById("start").classList.remove("hidden");
 
-    /* let img = new Image()
-    img.src = "../docs/assets/images/backgroundIMAGE.jpg";
-    this.ctx.drawImage(img, 0, 0,this.width, this.height) */
-    this.ctx.fillStyle = "black"                        // './docs/assets/images/cat-flower.gif'   // nao funciona
+    this.ctx.fillStyle = "black"                      
     this.ctx.fillRect(0, 0, this.width, this.height)
     this.ctx.fillStyle = "white"
     this.ctx.fillText("Game Over", 500, 300)
@@ -124,26 +111,12 @@ checkCollisions(){
             return true
         }
     })
-    /*counter(){
-        let counting = Math.floor(this.frames / 90);
-    } */
-/*     if(badCrash) this.life--
-    if(goodCrash){
-        this.life++ */
-        /*this.life++ <= 7
-        return
-    } else {
-        return 7;
-    };*/
         
     if(bigCrash){
         this.player.width = 70
         this.player.height = 70
         this.player.y = 480;
-    } /*else if(counter === 10){
-        this.player.width = 35
-        this.player.height = 35
-    } */
+    } 
     }
 
 checkGameOver(){
@@ -165,10 +138,10 @@ drawScore(){
     this.ctx.fillStyle = 'white'
     this.ctx.fillText(`Score: ${points}`, 1140, 40)
 }
-/*uplevel(){
-    if(points > 10)
+uplevel(){
+    if(this.points > 15)
     this.start.interval = setInterval(this.updateGameArea, 2);    /// nao funciona
-} */
+} 
 
 updateGameArea = () => {
     this.frames++
@@ -180,7 +153,7 @@ updateGameArea = () => {
     this.checkCollisions()
     this.drawLife()
     this.drawScore()
-    /*this.uplevel()  */
+    this.uplevel()  
     this.checkGameOver()
 };
 
