@@ -18,7 +18,7 @@ class Game {
         
         const gameOver = new Image();
         gameOver.addEventListener('load', () => {});
-        gameOver.src = ("../docs/assets/images/catlower.jpg");
+        gameOver.src = ("../docs/assets/images/transcendcat.jpg");
         this.gameOver = gameOver;
 }
 start = () => {
@@ -46,7 +46,7 @@ stop() {
 
     this.ctx.fillStyle = "black"                      
     this.ctx.fillRect(0, 0, this.width, this.height)
-    this.ctx.fillStyle = "white"
+    this.ctx.fillStyle = "../docs/assets/images/transcendcat.jpg"
     this.ctx.fillText("Game Over", 500, 300)
     clearInterval(this.interval);
     this.isRunning = false;
@@ -139,7 +139,7 @@ drawScore(){
     this.ctx.fillText(`Score: ${points}`, 1140, 40)
 }
 uplevel(){
-    if(this.points > 15)
+    if(this.points > 105)
     this.start.interval = setInterval(this.updateGameArea, 2);    /// nao funciona
 } 
 
